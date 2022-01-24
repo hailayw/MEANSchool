@@ -1,0 +1,23 @@
+<h1>List of Students</h1>
+<!-- <nav class="navbar">
+  <input type="text" class="form-control" name="name" [(ngModel)] = "name" (ngModelChange) = "search()"
+  placeholder="Enter name of a shop to search">
+</nav> -->
+<table class="table table-active">
+  <thead>
+    <!-- (click)="sort('Name')">Name&nbsp;<i class="fa fa-sort"></i> -->
+    <th>lastName</th>
+    <th>Email</th>
+    <th>Authorities</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students | paginate : {itemsPerPage: 3, currentPage: page};">
+      <td>{{student.lastName}}</td>
+      <td>{{student.email}}</td>
+      <td><a [routerLink]="['delete', student._id]">Delete</a> |
+      <a [routerLink]="['edit', student._id]">Edit</a> |
+      <a [routerLink]="['view', student._id]">View</a></td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange) = "page = $event"></pagination-controls>
